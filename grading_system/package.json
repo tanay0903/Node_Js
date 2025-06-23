@@ -1,0 +1,17 @@
+{
+  "name": "grading_system",
+  "version": "1.0.0",
+  "description": "Grading system for modular programming ",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js" ,
+    "input" : "node app2.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
