@@ -1,0 +1,22 @@
+RESTFUL API - JSON CRUD APP
+
+HTML render page(DONE)
+GET 
+/users - List all users JSON (DONE)
+/users/1 - get the user with ID 1
+/users/2 - get the user with ID 2
+
+for (/users/1 or say it as user 47) - we will use Dynamic Path parameter(dynamic routing)
+GET /api/users/:id 
+:id -> variable | Dynamic
+
+
+
+POST
+/users  Create new user
+
+PATCH 
+/users/1 or 2 or 3 - Edit the user ID 1 or 2 or 3
+
+DELETE
+/users/1 or 2 or 3 - DELETE the user with ID 1 or 2 or 3
