@@ -12,6 +12,7 @@ function App() {
   });
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const API_URL = "http://localhost:8000/api/users";
 
@@ -39,9 +40,7 @@ function App() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.patch(`${API_URL}/${editingId}`, formData, {
-            headers: { "Content-Type": "application/json" }
-          });
+        await axios.patch(`${API_URL}/${editingId}`, formData);
       } else {
         await axios.post(API_URL, formData);
       }
@@ -63,6 +62,7 @@ function App() {
       job_title: user.job_title
     });
     setEditingId(user.id);
+    setShowForm(true); // Show form when editing
   };
 
   // Delete user
@@ -85,6 +85,7 @@ function App() {
       job_title: ""
     });
     setEditingId(null);
+    setShowForm(false); // Hide form on cancel or after submission
   };
 
   // Handle search input
@@ -107,17 +108,22 @@ function App() {
         style={{ marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
       />
 
-      {/* 📝 User Form */}
-      <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
-        <input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} required />
-        <input type="text" name="last_name" placeholder="Last Name" value={formData.last_name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="text" name="gender" placeholder="Gender" value={formData.gender} onChange={handleChange} />
-        <input type="text" name="job_title" placeholder="Job Title" value={formData.job_title} onChange={handleChange} />
+      {/* ➕ Toggle Form */}
+      <button onClick={() => setShowForm(!showForm)} style={{ marginBottom: "1rem" }}>
+        {showForm ? "Close Form" : "Add User"}
+      </button>
 
-        <div style={{ marginTop: "1rem" }}>
-          <button type="submit">{editingId ? "Update User" : "Add User"}</button>
-          {editingId && (
+      {/* 📝 User Form */}
+      {showForm && (
+        <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
+          <input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} required />
+          <input type="text" name="last_name" placeholder="Last Name" value={formData.last_name} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+          <input type="text" name="gender" placeholder="Gender" value={formData.gender} onChange={handleChange} />
+          <input type="text" name="job_title" placeholder="Job Title" value={formData.job_title} onChange={handleChange} />
+
+          <div style={{ marginTop: "1rem" }}>
+            <button type="submit">{editingId ? "Update User" : "Submit"}</button>
             <button
               type="button"
               onClick={resetForm}
@@ -125,11 +131,11 @@ function App() {
             >
               Cancel
             </button>
-          )}
-        </div>
-      </form>
+          </div>
+        </form>
+      )}
 
-      {/* User List */}
+      {/* 📃 User List */}
       <ul style={{ paddingLeft: "0" }}>
         {users.map((user) => (
           <li key={user.id} style={{ marginBottom: "1.5rem", listStyle: "none" }}>

@@ -7656,14 +7656,6 @@
     "job_title": "Computer Systems Analyst II"
   },
   {
-    "id": 978,
-    "first_name": "Leesa",
-    "last_name": "Tuxwell",
-    "email": "ltuxwellr5@sun.com",
-    "gender": "Agender",
-    "job_title": "Geological Engineer"
-  },
-  {
     "id": 980,
     "first_name": "Teirtza",
     "last_name": "Dumbelton",
@@ -7816,11 +7808,11 @@
     "id": 1002
   },
   {
-    "first_name": "Ajinkya",
-    "last_name": "Andure",
-    "email": "Ajinkya.Andure.045678@panasonic.aero",
+    "first_name": "Kuro",
+    "last_name": "shiro",
+    "email": "shirokuro@gmail.com",
     "gender": "Male ",
-    "job_title": "SDE II",
-    "id": 979
+    "job_title": "sr.Account Executive",
+    "id": 978
   }
 ]
