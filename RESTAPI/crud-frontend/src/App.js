@@ -30,7 +30,6 @@ function App() {
     fetchUsers();
   }, []);
 
-  // Handle form field change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -62,7 +61,7 @@ function App() {
       job_title: user.job_title
     });
     setEditingId(user.id);
-    setShowForm(true); // Show form when editing
+    setShowForm(true);
   };
 
   // Delete user
@@ -85,7 +84,7 @@ function App() {
       job_title: ""
     });
     setEditingId(null);
-    setShowForm(false); // Hide form on cancel or after submission
+    setShowForm(false); 
   };
 
   // Handle search input
