@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
@@ -99,7 +99,7 @@ function App() {
     <div style={{ maxWidth: "700px", margin: "auto", padding: "2rem" }}>
       <h2>CRUD User Manager</h2>
 
-      {/* 🔍 Search */}
+      {/* Search */}
       <input
         type="text"
         placeholder="Search by ID, name, email or job title"
@@ -108,12 +108,12 @@ function App() {
         style={{ marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
       />
 
-      {/* ➕ Toggle Form */}
+      {/* Toggle Form */}
       <button onClick={() => setShowForm(!showForm)} style={{ marginBottom: "1rem" }}>
         {showForm ? "Close Form" : "Add User"}
       </button>
 
-      {/* 📝 User Form */}
+      {/* User Form */}
       {showForm && (
         <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
           <input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} required />
@@ -135,7 +135,7 @@ function App() {
         </form>
       )}
 
-      {/* 📃 User List */}
+      {/* User List */}
       <ul style={{ paddingLeft: "0" }}>
         {users.map((user) => (
           <li key={user.id} style={{ marginBottom: "1.5rem", listStyle: "none" }}>

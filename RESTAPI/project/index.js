@@ -11,10 +11,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Load users from file dynamically (avoids require cache)
 const getUsers = () => JSON.parse(fs.readFileSync(DATA_PATH, "utf-8"));
 
-// HTML list of users
 app.get("/users", (req, res) => {
   const users = getUsers();
   const html = `
@@ -43,7 +41,7 @@ app.get("/api/users", (req, res) => {
 
       const matched = idMatch || fieldMatch;
 
-      // prevent duplicates by checking if id already seen
+      // check duplicates
       if (matched && !seen.has(user.id)) {
         seen.add(user.id);
         return true;

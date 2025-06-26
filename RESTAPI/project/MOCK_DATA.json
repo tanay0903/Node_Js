@@ -17,11 +17,11 @@
   },
   {
     "id": 19,
-    "first_name": "Igor",
-    "last_name": "Biggs",
+    "first_name": "Igo",
+    "last_name": "Bigg",
     "email": "ibiggsi@archive.org",
     "gender": "Male",
-    "job_title": "Engineer IV"
+    "job_title": "SE IV"
   },
   {
     "id": 20,
@@ -33,10 +33,10 @@
   },
   {
     "id": 21,
-    "first_name": "Malva",
-    "last_name": "Jorgesen",
-    "email": "mjorgesenk@spiegel.de",
-    "gender": "Female",
+    "first_name": "Mala",
+    "last_name": "statics",
+    "email": "malastatsics@spiegel.de",
+    "gender": "male",
     "job_title": "Safety Technician III"
   },
   {
@@ -46,22 +46,6 @@
     "email": "tdemchenl@example.com",
     "gender": "Male",
     "job_title": "Financial Analyst"
-  },
-  {
-    "id": 23,
-    "first_name": "Oberon",
-    "last_name": "Dikes",
-    "email": "odikesm@google.com.au",
-    "gender": "Male",
-    "job_title": "Accountant I"
-  },
-  {
-    "id": 24,
-    "first_name": "Jo ann",
-    "last_name": "Crossman",
-    "email": "jcrossmann@addtoany.com",
-    "gender": "Female",
-    "job_title": "Occupational Therapist"
   },
   {
     "id": 25,
@@ -7638,14 +7622,6 @@
     "email": "jtopazr2@dot.gov",
     "gender": "Male",
     "job_title": "Automation Specialist II"
-  },
-  {
-    "id": 976,
-    "first_name": "Berni",
-    "last_name": "Dunwoody",
-    "email": "bdunwoodyr3@fastcompany.com",
-    "gender": "Female",
-    "job_title": "Help Desk Technician"
   },
   {
     "id": 977,
