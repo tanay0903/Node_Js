@@ -1,75 +1,11 @@
 [
   {
-    "id": 4,
-    "first_name": "Tata",
-    "last_name": "Arnald",
-    "email": "tata@taobao.com",
-    "gender": "Male",
-    "job_title": "Sr. Cost Accountant"
-  },
-  {
-    "id": 8,
-    "first_name": "Andy",
-    "last_name": "Fitz",
-    "email": "afit@bloglovin.com",
-    "gender": "Male",
-    "job_title": "Budget Analyst III"
-  },
-  {
     "id": 19,
-    "first_name": "Igo",
-    "last_name": "Bigg",
+    "first_name": "kunal",
+    "last_name": "Btawaw",
     "email": "ibiggsi@archive.org",
     "gender": "Male",
     "job_title": "SE IV"
-  },
-  {
-    "id": 20,
-    "first_name": "Oralee",
-    "last_name": "Bestwall",
-    "email": "obestwallj@vkontakte.ru",
-    "gender": "Female",
-    "job_title": "Developer II"
-  },
-  {
-    "id": 21,
-    "first_name": "Mala",
-    "last_name": "statics",
-    "email": "malastatsics@spiegel.de",
-    "gender": "male",
-    "job_title": "Safety Technician III"
-  },
-  {
-    "id": 22,
-    "first_name": "Torrence",
-    "last_name": "Demchen",
-    "email": "tdemchenl@example.com",
-    "gender": "Male",
-    "job_title": "Financial Analyst"
-  },
-  {
-    "id": 25,
-    "first_name": "Halsey",
-    "last_name": "Bearsmore",
-    "email": "hbearsmoreo@godaddy.com",
-    "gender": "Male",
-    "job_title": "Health Coach II"
-  },
-  {
-    "id": 26,
-    "first_name": "Wernher",
-    "last_name": "Bonass",
-    "email": "wbonassp@ox.ac.uk",
-    "gender": "Male",
-    "job_title": "Sales Representative"
-  },
-  {
-    "id": 27,
-    "first_name": "Ruby",
-    "last_name": "Whitley",
-    "email": "rwhitleyq@devhub.com",
-    "gender": "Male",
-    "job_title": "Senior Sales Associate"
   },
   {
     "id": 28,
@@ -81,27 +17,11 @@
   },
   {
     "id": 29,
-    "first_name": "Karyl",
+    "first_name": "kevin",
     "last_name": "Vassie",
     "email": "kvassies@fastcompany.com",
     "gender": "Female",
     "job_title": "General Manager"
-  },
-  {
-    "id": 30,
-    "first_name": "Whittaker",
-    "last_name": "Pryell",
-    "email": "wpryellt@usatoday.com",
-    "gender": "Male",
-    "job_title": "Automation Specialist II"
-  },
-  {
-    "id": 31,
-    "first_name": "Inessa",
-    "last_name": "Hinkes",
-    "email": "ihinkesu@theatlantic.com",
-    "gender": "Female",
-    "job_title": "Staff Accountant II"
   },
   {
     "id": 32,
@@ -3264,92 +3184,12 @@
     "job_title": "Systems Administrator III"
   },
   {
-    "id": 431,
-    "first_name": "Aimil",
-    "last_name": "Whitemarsh",
-    "email": "awhitemarshby@goodreads.com",
-    "gender": "Female",
-    "job_title": "Marketing Assistant"
-  },
-  {
     "id": 432,
     "first_name": "Carr",
     "last_name": "MacRonald",
     "email": "cmacronaldbz@histats.com",
     "gender": "Male",
     "job_title": "Senior Developer"
-  },
-  {
-    "id": 433,
-    "first_name": "Grace",
-    "last_name": "Goring",
-    "email": "ggoringc0@wsj.com",
-    "gender": "Male",
-    "job_title": "Editor"
-  },
-  {
-    "id": 434,
-    "first_name": "Sena",
-    "last_name": "Chilvers",
-    "email": "schilversc1@msu.edu",
-    "gender": "Female",
-    "job_title": "Financial Advisor"
-  },
-  {
-    "id": 435,
-    "first_name": "Ross",
-    "last_name": "Cokly",
-    "email": "rcoklyc2@pbs.org",
-    "gender": "Male",
-    "job_title": "Software Consultant"
-  },
-  {
-    "id": 436,
-    "first_name": "Cariotta",
-    "last_name": "Mackstead",
-    "email": "cmacksteadc3@tripod.com",
-    "gender": "Female",
-    "job_title": "Nurse"
-  },
-  {
-    "id": 437,
-    "first_name": "Amii",
-    "last_name": "Giannasi",
-    "email": "agiannasic4@webs.com",
-    "gender": "Female",
-    "job_title": "Senior Sales Associate"
-  },
-  {
-    "id": 438,
-    "first_name": "Ammamaria",
-    "last_name": "Crighton",
-    "email": "acrightonc5@samsung.com",
-    "gender": "Female",
-    "job_title": "Civil Engineer"
-  },
-  {
-    "id": 439,
-    "first_name": "Mortie",
-    "last_name": "Carhart",
-    "email": "mcarhartc6@cdbaby.com",
-    "gender": "Male",
-    "job_title": "Research Assistant III"
-  },
-  {
-    "id": 440,
-    "first_name": "Gabby",
-    "last_name": "Minton",
-    "email": "gmintonc7@about.me",
-    "gender": "Non-binary",
-    "job_title": "Statistician II"
-  },
-  {
-    "id": 441,
-    "first_name": "Nollie",
-    "last_name": "Grayland",
-    "email": "ngraylandc8@phoca.cz",
-    "gender": "Male",
-    "job_title": "Social Worker"
   },
   {
     "id": 442,
@@ -3448,17 +3288,9 @@
     "job_title": "Mechanical Systems Engineer"
   },
   {
-    "id": 454,
-    "first_name": "Jordanna",
-    "last_name": "MacLucais",
-    "email": "jmaclucaiscl@mozilla.org",
-    "gender": "Female",
-    "job_title": "Research Assistant IV"
-  },
-  {
     "id": 455,
-    "first_name": "Spenser",
-    "last_name": "Renad",
+    "first_name": "Spender ",
+    "last_name": "regart",
     "email": "srenadcm@biglobe.ne.jp",
     "gender": "Polygender",
     "job_title": "Mechanical Systems Engineer"
@@ -7790,5 +7622,21 @@
     "gender": "Male ",
     "job_title": "sr.Account Executive",
     "id": 978
+  },
+  {
+    "first_name": "Shubh ",
+    "last_name": "Sathe ",
+    "email": "shubhsathe09@gmail.com",
+    "gender": "Male",
+    "job_title": "Embedded engineer ",
+    "id": 958
+  },
+  {
+    "first_name": "Om ",
+    "last_name": "wagh",
+    "email": "omwagh@gmail.com",
+    "gender": "Male ",
+    "job_title": "intern",
+    "id": 958
   }
 ]

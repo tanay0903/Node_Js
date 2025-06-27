@@ -1,5 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  TextField,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Box,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -8,15 +22,17 @@ function App() {
     last_name: "",
     email: "",
     gender: "",
-    job_title: ""
+    job_title: "",
   });
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showForm, setShowForm] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", type: "success" });
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
 
   const API_URL = "http://localhost:8000/api/users";
 
-  // Fetch users from server (with optional search)
   const fetchUsers = async (query = "") => {
     try {
       const res = await axios.get(`${API_URL}?search=${query}`);
@@ -34,120 +50,224 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submit (add or update)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (editingId) {
         await axios.patch(`${API_URL}/${editingId}`, formData);
+        showSnackbar("User updated successfully", "success");
       } else {
         await axios.post(API_URL, formData);
+        showSnackbar("User added successfully", "success");
       }
-
       resetForm();
       fetchUsers(searchTerm);
+      setDialogOpen(false);
     } catch (err) {
-      console.error("Submit error", err);
+      showSnackbar("Failed to save user", "error");
     }
   };
 
-  // Set data in form when editing
   const handleEdit = (user) => {
     setFormData({
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
       gender: user.gender,
-      job_title: user.job_title
+      job_title: user.job_title,
     });
     setEditingId(user.id);
-    setShowForm(true);
+    setDialogOpen(true);
   };
 
-  // Delete user
-  const handleDelete = async (id) => {
+  const confirmDelete = (id) => {
+    setConfirmDeleteId(id);
+    setConfirmDialogOpen(true);
+  };
+
+  const handleDelete = async () => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await axios.delete(`${API_URL}/${confirmDeleteId}`);
       fetchUsers(searchTerm);
+      showSnackbar("User deleted successfully", "info");
     } catch (err) {
-      console.error("Delete error", err);
+      showSnackbar("Failed to delete user", "error");
+    } finally {
+      setConfirmDialogOpen(false);
+      setConfirmDeleteId(null);
     }
   };
 
-  // Reset form and editing state
   const resetForm = () => {
     setFormData({
       first_name: "",
       last_name: "",
       email: "",
       gender: "",
-      job_title: ""
+      job_title: "",
     });
     setEditingId(null);
-    setShowForm(false); 
   };
 
-  // Handle search input
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
     fetchUsers(value);
   };
 
+  const showSnackbar = (message, type = "success") => {
+    setSnackbar({ open: true, message, type });
+  };
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "first_name", headerName: "First Name", width: 130 },
+    { field: "last_name", headerName: "Last Name", width: 130 },
+    { field: "email", headerName: "Email", width: 200 },
+    { field: "gender", headerName: "Gender", width: 100 },
+    { field: "job_title", headerName: "Job Title", width: 200 },
+    {
+      field: "actions",
+      headerName: "Actions",
+      width: 120,
+      sortable: false,
+      renderCell: (params) => (
+        <>
+          <EditIcon
+            onClick={() => handleEdit(params.row)}
+            style={{ cursor: "pointer", color: "#1976d2", marginRight: "1rem" }}
+            titleAccess="Edit"
+          />
+          <DeleteIcon
+            onClick={() => confirmDelete(params.row.id)}
+            style={{ cursor: "pointer", color: "#d32f2f" }}
+            titleAccess="Delete"
+          />
+        </>
+      ),
+    },
+  ];
+
   return (
-    <div style={{ maxWidth: "700px", margin: "auto", padding: "2rem" }}>
+    <Box sx={{ maxWidth: "1000px", margin: "auto", padding: "2rem" }}>
       <h2>CRUD User Manager</h2>
 
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search by ID, name, email or job title"
+      <TextField
+        label="Search by ID, Name, Email or Job Title"
         value={searchTerm}
         onChange={handleSearch}
-        style={{ marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
+        fullWidth
+        style={{ marginBottom: "1.5rem" }}
       />
 
-      {/* Toggle Form */}
-      <button onClick={() => setShowForm(!showForm)} style={{ marginBottom: "1rem" }}>
-        {showForm ? "Close Form" : "Add User"}
-      </button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          resetForm();
+          setDialogOpen(true);
+        }}
+        style={{ marginBottom: "1.5rem" }}
+      >
+        Add User
+      </Button>
 
-      {/* User Form */}
-      {showForm && (
-        <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
-          <input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} required />
-          <input type="text" name="last_name" placeholder="Last Name" value={formData.last_name} onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-          <input type="text" name="gender" placeholder="Gender" value={formData.gender} onChange={handleChange} />
-          <input type="text" name="job_title" placeholder="Job Title" value={formData.job_title} onChange={handleChange} />
+      <div style={{ height: 500, width: "100%" }}>
+        <DataGrid
+          rows={users}
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10, 25, 50]}
+          disableSelectionOnClick
+        />
+      </div>
 
-          <div style={{ marginTop: "1rem" }}>
-            <button type="submit">{editingId ? "Update User" : "Submit"}</button>
-            <button
-              type="button"
-              onClick={resetForm}
-              style={{ marginLeft: "1rem" }}
-            >
-              Cancel
-            </button>
-          </div>
+      {/* Form Dialog */}
+      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} fullWidth>
+        <DialogTitle>{editingId ? "Edit User" : "Add User"}</DialogTitle>
+        <form onSubmit={handleSubmit}>
+          <DialogContent dividers>
+            <TextField
+              name="first_name"
+              label="First Name"
+              fullWidth
+              value={formData.first_name}
+              onChange={handleChange}
+              required
+              margin="dense"
+            />
+            <TextField
+              name="last_name"
+              label="Last Name"
+              fullWidth
+              value={formData.last_name}
+              onChange={handleChange}
+              required
+              margin="dense"
+            />
+            <TextField
+              name="email"
+              label="Email"
+              fullWidth
+              value={formData.email}
+              onChange={handleChange}
+              required
+              margin="dense"
+            />
+            <TextField
+              name="gender"
+              label="Gender"
+              fullWidth
+              value={formData.gender}
+              onChange={handleChange}
+              margin="dense"
+            />
+            <TextField
+              name="job_title"
+              label="Job Title"
+              fullWidth
+              value={formData.job_title}
+              onChange={handleChange}
+              margin="dense"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setDialogOpen(false)}>Cancel</Button>
+            <Button type="submit" variant="contained" color="primary">
+              {editingId ? "Update" : "Add"}
+            </Button>
+          </DialogActions>
         </form>
-      )}
+      </Dialog>
 
-      {/* User List */}
-      <ul style={{ paddingLeft: "0" }}>
-        {users.map((user) => (
-          <li key={user.id} style={{ marginBottom: "1.5rem", listStyle: "none" }}>
-            <strong>{user.first_name} {user.last_name}</strong><br />
-            {user.email} <br />
-            {user.gender} | {user.job_title}
-            <br />
-            <button onClick={() => handleEdit(user)} style={{ marginTop: "0.5rem" }}>Edit</button>
-            <button onClick={() => handleDelete(user.id)} style={{ marginLeft: "1rem", color: "red" }}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={confirmDialogOpen} onClose={() => setConfirmDialogOpen(false)}>
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogContent>Are you sure you want to delete this user?</DialogContent>
+        <DialogActions>
+          <Button onClick={() => setConfirmDialogOpen(false)}>Cancel</Button>
+          <Button onClick={handleDelete} color="error" variant="contained">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Snackbar Notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.type}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+    </Box>
   );
 }
 

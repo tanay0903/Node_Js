@@ -13,10 +13,16 @@ GET /api/users/:id
 
 
 POST
-/users  Create new user
+/users  Create new user(DONE)
 
 PATCH 
-/users/1 or 2 or 3 - Edit the user ID 1 or 2 or 3
+/users/1 or 2 or 3 - Edit the user ID 1 or 2 or 3(DONE)
 
 DELETE
-/users/1 or 2 or 3 - DELETE the user with ID 1 or 2 or 3
+/users/1 or 2 or 3 - DELETE the user with ID 1 or 2 or 3(DONE)
+
+UI(DONE)
+
+tablular form 
+dialog box 
+delete notification
